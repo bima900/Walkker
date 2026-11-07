@@ -1,0 +1,16 @@
+schema_version = "1.0.0"
+
+id = "walkker"
+version = "0.1.0"
+name = "Walkker"
+tagline = "Procedural walk cycles for Rigify rigs"
+maintainer = "bima900"
+type = "add-on"
+
+website = "https://github.com/bima900/Walkker"
+tags = ["Animation", "Rigging"]
+
+blender_version_min = "5.0.0"
+
+license = ["SPDX:GPL-3.0-or-later"]
+copyright = ["2026 bima900"]

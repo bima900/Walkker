@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install ruff pytest
+      - run: ruff check .
+      - run: pytest
+
+  package:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build extension zip
+        run: |
+          cd walkker
+          zip -r ../walkker.zip . -x "__pycache__/*" "*.pyc"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: walkker
+          path: walkker.zip
